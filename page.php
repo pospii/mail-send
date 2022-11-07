@@ -17,8 +17,6 @@
             <h1>Pospi</h1>
             <nav>
                 <ul>
-                    <!-- Všechny odkazy tedy vedou na soubor s layoutem, kterému předávají v parametru název stránky, 
-                    která se do něj má vložit. Tyto HTML stránky si vložíme do podsložky podstranky/ se stejným názvem a příponou .php. -->                    
                     <a href="index.php?stranka=domu"><li>Domů</li></a>
                     <a href="index.php?stranka=dovednosti"><li>Dovednosti</li></a>
                     <a href="index.php?stranka=reference"><li>Reference</li></a>
@@ -36,11 +34,9 @@
                     if (isset($_GET['stranka']))
                         $stranka = $_GET['stranka'];
                     else
-                        $stranka = 'domu'; // pokud není parametr zadaný, zobrazí se strána domů
-                        // k ověření řetězce pomocí regulárního výrazu slouží PHP funkce preg_match(), která vrátí 1 pokud text odpovídá.
+                        $stranka = 'domu';
                         if (preg_match('/^[a-z0-9]+$/', $stranka))
                     {
-                        // Funkce bere jako parametr opět cestu k souboru a obsah hned vypíše. Pokud je v souboru nějaká PHP sekvence, tak ji spustí.
                         $vlozeno = include('podstranky/' . $stranka . '.php');
                         if (!$vlozeno)
                             echo('Podstránka nenalezena');
